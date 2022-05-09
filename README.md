@@ -1,3 +1,11 @@
+#URL FORK DEL REPOSITORIO:
+https://github.com/AngelaEspinosa2021/kata-crud-refactoring.git
+
+#URL DEL VIDEO:
+https://youtu.be/ZXXmln7dbnA
+
+
+
 # [Problema]
 
 Pueden ver los siguientes videos para poder comprender la base del código fuente dentro de este repositorio. 
