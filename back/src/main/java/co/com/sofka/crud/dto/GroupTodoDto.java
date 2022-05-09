@@ -24,7 +24,7 @@ public class GroupTodoDto {
     public GroupTodoDto() {
     }
 
-    public Long getId_groupTodo() {
+    public static Long getId_groupTodo() {
         return id_groupTodo;
     }
 

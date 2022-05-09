@@ -1,5 +1,6 @@
 package co.com.sofka.crud.controller;
 
+import co.com.sofka.crud.dto.GroupTodoDto;
 import co.com.sofka.crud.model.GroupTodo;
 import co.com.sofka.crud.model.Todo;
 import co.com.sofka.crud.service.GroupTodoService;
@@ -15,19 +16,19 @@ public class GroupTodoController {
     private GroupTodoService service;
 
     @GetMapping(value = "api/grouptodos")
-    public Iterable<GroupTodo> list(){
-        return service.groupTodolist();
+    public Iterable<GroupTodoDto> list(){
+        return service.listTodo();
     }
 
     @PostMapping(value = "api/groupTodo")
-    public GroupTodo save(@RequestBody GroupTodo groupTodo){
-        return service.saveTodo(groupTodo);
+    public GroupTodoDto save(@RequestBody GroupTodoDto groupTodoDto){
+        return service.create(groupTodoDto);
     }
 
     @PutMapping(value = "api/groupTodo")
-    public GroupTodo update(@RequestBody GroupTodo groupTodo){
-        if(groupTodo.getId_groupTodo() != null){
-            return service.saveTodo(groupTodo);
+    public GroupTodoDto update(@RequestBody GroupTodoDto groupTodoDto){
+        if(GroupTodoDto.getId_groupTodo() != null){
+            return service.editTodo(groupTodoDto, groupTodoDto.getId_groupTodo());
         }
         throw new RuntimeException("No existe el id para actualizar");
     }
@@ -38,8 +39,8 @@ public class GroupTodoController {
     }
 
     @GetMapping(value = "api/{id}/groupTodo")
-    public GroupTodo get(@PathVariable("id") Long id){
-        return service.getTodo(id);
+    public GroupTodoDto get(@PathVariable("id") Long id){
+        return service.getTodoById(id);
     }
 
 }

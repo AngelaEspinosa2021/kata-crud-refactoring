@@ -26,7 +26,7 @@ public class TodoController {
     @PutMapping(value = "api/todo")
     public TodoDto update(@RequestBody TodoDto todoDto){
         if(todoDto.getId() != null){
-            return service.create(todoDto);
+            return service.editTodo(todoDto, todoDto.getId());
         }
         throw new RuntimeException("No existe el id para actualziar");
     }
