@@ -17,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class TodoContraintsValidationExceptionTest {
-
     @Autowired
     private TodoService todoService;
 
