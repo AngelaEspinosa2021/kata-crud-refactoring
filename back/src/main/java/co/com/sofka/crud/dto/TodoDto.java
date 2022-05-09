@@ -9,15 +9,15 @@ public class TodoDto {
     private String name;
 
     private boolean completed;
-    private Long groupListId;
+    private String groupListId;
 
-    public TodoDto(String name, boolean completed, Long groupListId){
+    public TodoDto(String name, boolean completed, String groupListId){
         this.name=name;
         this.completed=completed;
         this.groupListId=groupListId;
     }
 
-    public TodoDto(Long id, String name, boolean completed, Long groupListId) {
+    public TodoDto(Long id, String name, boolean completed, String groupListId) {
         this.id = id;
         this.name = name;
         this.completed = completed;
@@ -87,11 +87,11 @@ public class TodoDto {
         this.completed = completed;
     }
 
-    public Long getGroupListId() {
+    public String getGroupListId() {
         return groupListId;
     }
 
-    public void setGroupListId(Long groupListId) {
+    public void setGroupListId(String groupListId) {
         this.groupListId = groupListId;
     }
 }
