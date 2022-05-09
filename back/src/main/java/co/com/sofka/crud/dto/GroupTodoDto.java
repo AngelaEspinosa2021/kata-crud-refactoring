@@ -48,5 +48,5 @@ public class GroupTodoDto {
         this.todoList = todoList;
     }
 
-    
+
 }

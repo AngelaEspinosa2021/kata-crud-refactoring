@@ -1,8 +1,6 @@
 package co.com.sofka.crud.service;
 
 import co.com.sofka.crud.dto.TodoDto;
-import co.com.sofka.crud.model.Todo;
-
 import javax.validation.Valid;
 import java.util.List;
 
