@@ -15,5 +15,7 @@ public interface ITodoService {
 
     public List<TodoDto> getListTodoByGroupListId(@Valid String groupListId);
 
-    public boolean deleteTodo(Long id);
+    public TodoDto getTodoById(@Valid Long id);
+
+    public boolean deleteTodo(@Valid Long id);
 }

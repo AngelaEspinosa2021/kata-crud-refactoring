@@ -68,6 +68,12 @@ public class TodoService implements ITodoService{
     }
 
     @Override
+    public TodoDto getTodoById(Long id){
+        Optional<Todo> todoEntity = todoRepository.findById(id);
+        return modelMapper.map(todoEntity, TodoDto.class);
+    }
+
+    @Override
     public boolean deleteTodo(Long id){
         try{
             todoRepository.deleteById(id);
