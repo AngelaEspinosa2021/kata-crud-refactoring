@@ -9,7 +9,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.validation.ConstraintViolationException;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -24,6 +24,12 @@ public class TodoContraintsValidationExceptionTest {
         assertThrows(ConstraintViolationException.class, ()->{todoService.create(new TodoDto(null,false, "2"));});
         assertThrows(ConstraintViolationException.class, ()->{todoService.create(new TodoDto(" ",false, "2"));});
 
-
+    }
+    @Test
+    public void createTodoOk(){
+       TodoDto todoDto =  todoService.create(new TodoDto("ver pelicula",false,"3"));
+       assertNotNull(todoDto);
+       assertEquals("ver pelicula",todoDto.getName() );
+       assertNotNull(todoDto.getId());
     }
 }
