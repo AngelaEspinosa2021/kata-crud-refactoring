@@ -1,4 +1,4 @@
-package co.com.sofka.crud.Model;
+package co.com.sofka.crud.model;
 
 import javax.persistence.*;
 
