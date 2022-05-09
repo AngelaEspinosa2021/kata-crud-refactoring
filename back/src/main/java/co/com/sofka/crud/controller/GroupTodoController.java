@@ -27,7 +27,7 @@ public class GroupTodoController {
 
     @PutMapping(value = "api/groupTodo")
     public GroupTodoDto update(@RequestBody GroupTodoDto groupTodoDto){
-        if(GroupTodoDto.getId_groupTodo() != null){
+        if(groupTodoDto.getId_groupTodo() != null){
             return service.editTodo(groupTodoDto, groupTodoDto.getId_groupTodo());
         }
         throw new RuntimeException("No existe el id para actualizar");
