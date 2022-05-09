@@ -11,7 +11,7 @@ public class Todo {
 
     private String name;
     private boolean completed;
-    private Long groupListId;
+    private String groupListId;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_group_todo")
@@ -21,7 +21,7 @@ public class Todo {
 
     }
 
-    public Todo(String name, boolean completed, Long groupListId, GroupTodo groupTodo) {
+    public Todo(String name, boolean completed, String groupListId, GroupTodo groupTodo) {
         this.name = name;
         this.completed = completed;
         this.groupListId = groupListId;
@@ -36,11 +36,11 @@ public class Todo {
         this.groupTodo = groupTodo;
     }
 
-    public Long getGroupListId() {
+    public String getGroupListId() {
         return groupListId;
     }
 
-    public void setGroupListId(Long groupListId) {
+    public void setGroupListId(String groupListId) {
         this.groupListId = groupListId;
     }
 
@@ -91,5 +91,16 @@ public class Todo {
         } else if (!id.equals(other.id))
             return false;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", completed=" + completed +
+                ", groupListId=" + groupListId +
+                ", groupTodo=" + groupTodo +
+                '}';
     }
 }

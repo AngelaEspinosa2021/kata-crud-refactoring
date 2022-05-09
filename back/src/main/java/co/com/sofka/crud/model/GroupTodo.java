@@ -72,4 +72,13 @@ public class GroupTodo {
         result = prime * result + ((id_groupTodo == null) ? 0 : id_groupTodo.hashCode());
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "GroupTodo{" +
+                "id_groupTodo=" + id_groupTodo +
+                ", name='" + name + '\'' +
+                ", todoList=" + todoList +
+                '}';
+    }
 }
