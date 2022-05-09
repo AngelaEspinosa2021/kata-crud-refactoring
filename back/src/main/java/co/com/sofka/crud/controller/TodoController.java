@@ -1,4 +1,4 @@
-package co.com.sofka.crud;
+package co.com.sofka.crud.controller;
 
 import co.com.sofka.crud.model.Todo;
 import co.com.sofka.crud.service.TodoService;

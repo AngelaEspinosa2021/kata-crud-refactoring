@@ -4,13 +4,15 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="group_todo")
+@Table(name="grouptodo")
 public class GroupTodo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_groupTodo;
 
     private String name;
+
+    @OneToMany(mappedBy="groupListId")
     private List<Todo> todoList;
 
     public GroupTodo(){
@@ -19,6 +21,30 @@ public class GroupTodo {
 
     public GroupTodo(String name, List<Todo> todoList) {
         this.name = name;
+        this.todoList = todoList;
+    }
+
+    public Long getId_groupTodo() {
+        return id_groupTodo;
+    }
+
+    public void setId_groupTodo(Long id_groupTodo) {
+        this.id_groupTodo = id_groupTodo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Todo> getTodoList() {
+        return todoList;
+    }
+
+    public void setTodoList(List<Todo> todoList) {
         this.todoList = todoList;
     }
 

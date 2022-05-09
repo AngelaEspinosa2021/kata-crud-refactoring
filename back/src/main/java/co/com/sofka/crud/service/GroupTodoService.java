@@ -1,6 +1,8 @@
 package co.com.sofka.crud.service;
 
+import co.com.sofka.crud.model.GroupTodo;
 import co.com.sofka.crud.model.Todo;
+import co.com.sofka.crud.repository.GroupTodoRepository;
 import co.com.sofka.crud.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,21 +10,22 @@ import org.springframework.stereotype.Service;
 @Service
 public class GroupTodoService {
     @Autowired
-    private TodoRepository groupTodoRepository;
+    private GroupTodoRepository groupTodoRepository;
 
-    public Iterable<Todo> groupTodolist(){
+    public Iterable<GroupTodo> groupTodolist(){
         return groupTodoRepository.findAll();
     }
 
-    public Todo saveTodo(Todo todo){
-        return groupTodoRepository.save(todo);
+    public GroupTodo saveTodo(GroupTodo grouptodo){
+        return groupTodoRepository.save(grouptodo);
     }
 
     public void deleteTodo(Long id){
         groupTodoRepository.delete(getTodo(id));
     }
 
-    public Todo getTodo(Long id){
+    public GroupTodo getTodo(Long id){
         return groupTodoRepository.findById(id).orElseThrow();
     }
+
 }

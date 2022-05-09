@@ -11,28 +11,36 @@ public class Todo {
 
     private String name;
     private boolean completed;
-    private String groupListId;
+    private Long groupListId;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "id_groupTodo")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_group_todo")
     private GroupTodo groupTodo;
 
-    public Todo() {
+    public Todo(){
 
     }
 
-    public Todo(String name, boolean completed, String groupListId, GroupTodo groupTodo) {
+    public Todo(String name, boolean completed, Long groupListId, GroupTodo groupTodo) {
         this.name = name;
         this.completed = completed;
         this.groupListId = groupListId;
         this.groupTodo = groupTodo;
     }
 
-    public String getGroupListId() {
+    public GroupTodo getGroupTodo() {
+        return groupTodo;
+    }
+
+    public void setGroupTodo(GroupTodo groupTodo) {
+        this.groupTodo = groupTodo;
+    }
+
+    public Long getGroupListId() {
         return groupListId;
     }
 
-    public void setGroupListId(String groupListId) {
+    public void setGroupListId(Long groupListId) {
         this.groupListId = groupListId;
     }
 
