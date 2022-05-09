@@ -21,22 +21,6 @@ public class TodoService implements ITodoService{
 
     @Autowired
     private ModelMapper modelMapper;
-/*
-    public Iterable<Todo> list(){
-        return repository.findAll();
-    }
-
-    public Todo save(Todo todo){
-        return repository.save(todo);
-    }
-
-    public void delete(Long id){
-        repository.delete(get(id));
-    }
-
-    public Todo get(Long id){
-         return repository.findById(id).orElseThrow();
-    }*/
 
     @Override
     public TodoDto create(TodoDto todo) {
@@ -58,13 +42,39 @@ public class TodoService implements ITodoService{
     }
 
     @Override
-    public Todo editTodo(TodoDto todo, Long id) {
-        Optional<Todo> item = todoRepository.findById(id);
+    public TodoDto editTodo(TodoDto todo, Long idTodo) {
+        Optional<Todo> item = todoRepository.findById(idTodo);
         Todo todoEntity = new Todo();
-        if( id == todoEntity.getId())
+        if( idTodo == todoEntity.getId())
         {
             todoEntity = modelMapper.map(todo, Todo.class );
+            todoRepository.save(todoEntity);
         }
-        return todoRepository.save(todoEntity);
+        return modelMapper.map(todoEntity, TodoDto.class);
     }
+
+    @Override
+    public List<TodoDto> getListTodoByGroupListId(String groupListId) {
+        List<Todo> todoEntity = todoRepository.findAll();
+        List<TodoDto> todoDtoList = new ArrayList<>();
+        for(Todo todo: todoEntity){
+            if(todo.getGroupListId() == groupListId){
+                TodoDto todoDto = modelMapper.map(todoEntity, TodoDto.class);
+                todoDtoList.add(todoDto);
+            }
+        }
+
+        return todoDtoList;
+    }
+
+    @Override
+    public boolean deleteTodo(Long id){
+        try{
+            todoRepository.deleteById(id);
+            return true;
+        }catch(Exception error){
+            return false;
+        }
+    }
+
 }

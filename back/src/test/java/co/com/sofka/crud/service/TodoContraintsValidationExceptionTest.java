@@ -1,6 +1,7 @@
 package co.com.sofka.crud.service;
 
 import co.com.sofka.crud.dto.TodoDto;
+import co.com.sofka.crud.model.Todo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,4 +41,8 @@ public class TodoContraintsValidationExceptionTest {
         List<TodoDto> listTodoDto = todoService.listTodo();
         assertNotNull(listTodoDto);
     }
+
+
+
+
 }

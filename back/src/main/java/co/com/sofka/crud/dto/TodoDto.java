@@ -1,5 +1,6 @@
 package co.com.sofka.crud.dto;
 
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 public class TodoDto {
@@ -11,12 +12,6 @@ public class TodoDto {
     private boolean completed;
     private String groupListId;
 
-    public TodoDto(String name, boolean completed, String groupListId){
-        this.name=name;
-        this.completed=completed;
-        this.groupListId=groupListId;
-    }
-
     public TodoDto(Long id, String name, boolean completed, String groupListId) {
         this.id = id;
         this.name = name;
@@ -24,8 +19,13 @@ public class TodoDto {
         this.groupListId = groupListId;
     }
 
-    public TodoDto(){
+    public TodoDto(String name, boolean completed, String groupListId) {
+        this.name = name;
+        this.completed = completed;
+        this.groupListId = groupListId;
+    }
 
+    public TodoDto() {
     }
 
     @Override
