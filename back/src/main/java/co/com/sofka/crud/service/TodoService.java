@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @Validated
 public class TodoService implements ITodoService{
@@ -39,5 +42,17 @@ public class TodoService implements ITodoService{
         Todo todoEntity = modelMapper.map(todo, Todo.class);
         todoRepository.save(todoEntity);
         return modelMapper.map(todoEntity, TodoDto.class);
+    }
+
+    @Override
+    public List<TodoDto> listTodo() {
+        List<Todo> todoEntity = todoRepository.findAll();
+        List<TodoDto> todoDtoList = new ArrayList<>();
+        for(Todo todo: todoEntity)
+        {
+            TodoDto todoDto = modelMapper.map(todoEntity, TodoDto.class);
+            todoDtoList.add(todoDto);
+        }
+        return todoDtoList;
     }
 }
