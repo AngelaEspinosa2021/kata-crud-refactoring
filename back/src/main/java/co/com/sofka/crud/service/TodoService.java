@@ -6,8 +6,10 @@ import co.com.sofka.crud.repository.TodoRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 @Service
+@Validated
 public class TodoService implements ITodoService{
 
     @Autowired
