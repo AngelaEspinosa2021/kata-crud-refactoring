@@ -9,6 +9,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.validation.ConstraintViolationException;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
@@ -31,5 +33,11 @@ public class TodoContraintsValidationExceptionTest {
        assertNotNull(todoDto);
        assertEquals("ver pelicula",todoDto.getName() );
        assertNotNull(todoDto.getId());
+    }
+
+    @Test
+    public void listTodo(){
+        List<TodoDto> listTodoDto = todoService.listTodo();
+        assertNotNull(listTodoDto);
     }
 }
