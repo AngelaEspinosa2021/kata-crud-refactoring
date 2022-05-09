@@ -10,15 +10,13 @@ public class GroupTodoDto {
     private String name;
     private List<TodoDto> todoList;
 
-    public GroupTodoDto(Long id_groupTodo, String name, List<TodoDto> todoList) {
+    public GroupTodoDto(Long id_groupTodo, String name) {
         this.id = id_groupTodo;
         this.name = name;
-        this.todoList = todoList;
     }
 
-    public GroupTodoDto(String name, List<TodoDto> todoList) {
+    public GroupTodoDto(String name) {
         this.name = name;
-        this.todoList = todoList;
     }
 
     public GroupTodoDto() {

@@ -23,7 +23,7 @@ const Form = () => {
     };
 
 
-    fetch(HOST_API + "/grouptodo", {
+    fetch(HOST_API + "/todo", {
       method: "POST",
       body: JSON.stringify(request),
       headers: {
@@ -48,7 +48,7 @@ const Form = () => {
     };
 
 
-    fetch(HOST_API + "/grouptodo", {
+    fetch(HOST_API + "/todo", {
       method: "PUT",
       body: JSON.stringify(request),
       headers: {
@@ -83,7 +83,7 @@ const List = () => {
   const currentList = todo.list;
 
   useEffect(() => {
-    fetch(HOST_API + "/groupTodos")
+    fetch(HOST_API + "/todos")
       .then(response => response.json())
       .then((list) => {
         dispatch({ type: "update-list", list })
@@ -92,7 +92,7 @@ const List = () => {
 
 
   const onDelete = (id) => {
-    fetch(HOST_API + "/" + id + "/groupTodo", {
+    fetch(HOST_API + "/" + id + "/todo", {
       method: "DELETE"
     }).then((list) => {
       dispatch({ type: "delete-item", id })
