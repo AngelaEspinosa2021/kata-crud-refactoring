@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import javax.validation.ConstraintViolationException;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class TodoContraintsValidationExceptionTest {
@@ -16,16 +20,10 @@ public class TodoContraintsValidationExceptionTest {
 
     @Test
     public void contraintsValidationExceptionTest(){
-        try{
-            todoService.create(new TodoDto(null,false, "1"));
-        } catch (Exception e){
-            System.out.println("");
-        }
 
-        try{
-            todoService.create(new TodoDto(" ",false, "2"));
-        } catch (Exception e){
-            System.out.println("");
-        }
+        assertThrows(ConstraintViolationException.class, ()->{todoService.create(new TodoDto(null,false, "2"));});
+        assertThrows(ConstraintViolationException.class, ()->{todoService.create(new TodoDto(" ",false, "2"));});
+
+
     }
 }
