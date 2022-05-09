@@ -10,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Validated
@@ -54,5 +55,16 @@ public class TodoService implements ITodoService{
             todoDtoList.add(todoDto);
         }
         return todoDtoList;
+    }
+
+    @Override
+    public Todo editTodo(TodoDto todo, Long id) {
+        Optional<Todo> item = todoRepository.findById(id);
+        Todo todoEntity = new Todo();
+        if( id == todoEntity.getId())
+        {
+            todoEntity = modelMapper.map(todo, Todo.class );
+        }
+        return todoRepository.save(todoEntity);
     }
 }
